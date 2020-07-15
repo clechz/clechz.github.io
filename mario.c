@@ -8,16 +8,17 @@ int main(void)
     {
         height = get_int("enter heigt here: ");
     }
-    while (height < 1 || height > 8);
+    while (height < 1 || height > 8);  //the users height input
     
-    for (row = 0; row < height; row++ )
+    
+    for (row = 0; row < height; row++)// row loop is the loop that all they anthor loops is nested below it  and it adds new lines.
     {
-        for (space = 0; space < height - row - 1; space++)
+        for (space = 0; space < height - row - 1; space++)//adds apaces.
         {
             printf(" ");
         }
         
-        for(column = 0; column <= row ; column++)
+        for(column = 0; column <= row ; column++)// adds # .
         {
             printf("#");
         }

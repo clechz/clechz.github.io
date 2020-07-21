@@ -11,9 +11,7 @@ int main(void)
     string s = get_string("Text: ");
     int wn,sn,ln;
     wn = sn = ln = 0;
-
-
-    for(int i = 0, len = strlen(s); i < len; len++)
+    for(int i = 0, len = strlen(s); i < len; i++)
     {
         if(isalpha(s[i]))
             ln++;

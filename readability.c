@@ -35,7 +35,7 @@ int main(void)
     if(index <= 1)
         printf("Grade Before 1\n");
 
-    if(index >= 16 )
+    else if(index >= 16 )
         printf("Grade 16+\n");
 
     else

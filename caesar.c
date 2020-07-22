@@ -27,14 +27,14 @@ int main(int argc, string argv[])
             
             if(islower(c))
         {
-            m = 'a';
+            char m = 'a';
             printf("%c", (c - m + key) % 26 + m);
         }
         }
 
         else if(isupper(c))
         {
-            m = 'A'
+            char m = 'A';
             printf("%c", (c - m + key) % 26 + m);          }
         
         else

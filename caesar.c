@@ -6,7 +6,7 @@
 
 bool check_valid_key(string s);
 
-int main(int argc, string argv[])
+int main(int argc, char** argv)
 {
     if (argc != 2 || !check_valid_key(argv[1]))
     {

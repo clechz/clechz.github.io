@@ -1,19 +1,18 @@
+#include<stdio.h>
 #include<cs50.h>
 #include<stdlib.h>
-#include<stdio.h>
-#include<string.h>
 #include<ctype.h>
-
+#include<string.h>
 
 int main(int argc, char** argv)
 {
-    
+
     if (argc != 2)
     {
         printf("Usage: ./caesar key\n");
         return 1;
     }
-    
+
     int key = atoi(argv[1]); //"13">>13
     if (key < 0)
     {
@@ -21,13 +20,13 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    
+
     string plaintext = get_string("plaintext: ");
 
-
+    printf("Ciphertext: ");
     for (int i = 0, len = strlen(plaintext); i < len; i++)
     {
-        
+
 
         if(islower(plaintext[i]))
         {
@@ -35,12 +34,13 @@ int main(int argc, char** argv)
         }
         else if(isupper(plaintext[i]))
         {
-            printf("%c", (plaintext[i] - 'A' + key) % 26 + 'A');          
+            printf("%c", (plaintext[i] - 'A' + key) % 26 + 'A');
         }
         else
         {
             printf("%c", plaintext[i]);
-        }    
+        }
+        printf("\n");
     }
 }
 

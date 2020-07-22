@@ -42,7 +42,6 @@ int main(int argc, char** argv)
             printf("%c", plaintext[i]);
         }    
     }
-    printf("\n");
 }
 
 

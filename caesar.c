@@ -24,7 +24,7 @@ int main(int argc, string argv[])
         char c = plaintext[i];
         if (isalpha(c))
         {
-            char m = 'A';
+            
             if(islower(c))
         {
             m = 'a';
@@ -32,6 +32,11 @@ int main(int argc, string argv[])
         }
         }
 
+        else if(isupper(c))
+        {
+            m = 'A'
+            printf("%c", (c - m + key) % 26 + m);          }
+        
         else
         {
             printf("%c", c);

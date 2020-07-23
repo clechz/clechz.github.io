@@ -3,8 +3,8 @@
 #include<stdlib.h>
 #include<ctype.h>
 #include<string.h>
-
-int main(int argc, string argv[])
+//modules.
+int main(int argc, char **argv)
 {
 
     if (argc != 2)
@@ -21,18 +21,18 @@ int main(int argc, string argv[])
     }
 
 
-    string plaintext = get_string("plaintext: ");
+    string plaintext = get_string("plaintext: "); //plai text input
     //loop
     printf("ciphertext: ");
     for (int i = 0, len = strlen(plaintext); i < len; i++)
     {
 
 
-        if(islower(plaintext[i]))
+        if (islower(plaintext[i]))
         {
             printf("%c", (plaintext[i] - 'a' + key) % 26 + 'a');
         }
-        else if(isupper(plaintext[i]))
+        else if (isupper(plaintext[i]))
         {
             printf("%c", (plaintext[i] - 'A' + key) % 26 + 'A');
         }
@@ -42,7 +42,7 @@ int main(int argc, string argv[])
         }
 
     }
-    printf("\n");
+    printf("\n"); //new line
 }
 
 

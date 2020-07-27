@@ -1,15 +1,15 @@
 #include<stdio.h>
 #include<cs50.h>
 #include<string.h>
-
+//libaries
 #define MAX 9
 
 
 
-typedef struct
+typedef struct //class
 {
-   string name;
-   int votes;
+    string name;
+    int votes;
 }
 candidate;
 
@@ -20,7 +20,7 @@ int candidate_count;
 bool vote(string name);
 void print_winner(void);
 
-int main(int argc, string argv[])
+int main(int argc, string argv[]) //cmd args
 {
 
     if (argc < 2)
@@ -32,7 +32,7 @@ int main(int argc, string argv[])
     candidate_count = argc - 1;
     if (candidate_count > MAX)
     {
-        printf("Maximum number of candidates is %i\n",MAX);
+        printf("Maximum number of candidates is %i\n", MAX);
         return 2;
     }
     for (int i = 0; i <= candidate_count; i++)
@@ -43,31 +43,32 @@ int main(int argc, string argv[])
 
     int voter_count = get_int("Number of voters: ");
 
-    for(int i = 0; i < voter_count; i++)
+    for (int i = 0; i < voter_count; i++)
     {
-        string name = get_string("vote: ");
+        string name = get_string("vote: "); //inp
 
         if (!vote(name))
         {
-            printf("Invalid vote.\n");
+            printf("Invalid vote.\n"); //op
         }
     }
 
-    print_winner();
+    print_winner(); //winner
 }
-int get_index(string name)
+int get_index(string name) //var
 {
-    for(int i = 0; i < candidate_count; i++)
-    if(strcmp(name, candidates[i].name) == 0)
-        return i;
-
+    for (int i = 0; i < candidate_count; i++)
+        if (strcmp(name, candidates[i].name) == 0)
+        {
+            return i;
+        }
     return -1;
 }
 
 bool vote(string name)
 {
     int candidate_index = get_index(name);
-    if(candidate_index != -1)
+    if (candidate_index != -1)
     {
         candidates[candidate_index].votes++;
         return true;
@@ -78,10 +79,11 @@ bool vote(string name)
 int get_max(void)
 {
     int max_votes = candidates[0].votes;
-    for(int i = 1; i < candidate_count; i++)
-        if(candidates[i].votes > max_votes)
-        max_votes = candidates[i].votes;
-
+    for (int i = 1; i < candidate_count; i++) //loop
+        if (candidates[i].votes > max_votes)
+        {
+            max_votes = candidates[i].votes;
+        }
     return max_votes;
 }
 
@@ -89,10 +91,13 @@ void print_winner(void)
 {
     int max_votes = get_max();
 
-    for (int i = 0; i < candidate_count; i++)
+    for (int i = 0; i < candidate_count; i++) //loop
     {
         if (candidates[i].votes == max_votes)
-        printf("%s\n",candidates[i].name);
+        {
+            printf("%s\n", candidates[i].name); //last
+        }
+       
     }
 
 }

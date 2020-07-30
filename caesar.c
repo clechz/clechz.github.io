@@ -20,7 +20,7 @@ int main(int argc, char **argv)
         return 2;
     }
     
-    if(argv[1][2]) == 'x')
+    if(argv[1][2] == 'x')
     {
         printf("Usage: ./caesar key ");
         return 1;

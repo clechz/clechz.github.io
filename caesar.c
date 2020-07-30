@@ -19,8 +19,12 @@ int main(int argc, char **argv)
         printf("key must be positve\n");
         return 1;
     }
-
-
+    for(l = 0; l < strlen(k); l++)
+    if(isalpha(k[l]))
+    {
+        printf("Usage: key must be number")
+        return 1
+    }
     string plaintext = get_string("plaintext: "); //plai text input
     //loop
     printf("ciphertext: ");

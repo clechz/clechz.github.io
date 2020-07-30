@@ -18,7 +18,7 @@ int main(int argc, char string argv[])
     if (!isdigit(argv[1][j]))
     {
         printf("Usage: no-numirc, key");
-        return 1;
+        return false;
     }
 
 

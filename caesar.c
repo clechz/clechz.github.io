@@ -20,7 +20,7 @@ int main(int argc, char **argv)
         return 1;
     }
     for(l = 0; l < strlen(key); l++)
-    if(isalpha(l))
+    if(key[l] != int)
     {
         printf("Usage: key must be number");
         return 1;

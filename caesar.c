@@ -10,14 +10,14 @@ int main(int argc, char **argv)
     if (argc != 2)
     {
         printf("Usage: ./caesar key\n");
-        return -1;
+        return 1;
     }
 
     int key = atoi(argv[1]); //"13">>13
     if (key < 0)
     {
         printf("key must be positve\n");
-        return 2;
+        return 1;
     }
     
     if(argv[1][2] == 'x')

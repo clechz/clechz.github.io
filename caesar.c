@@ -19,8 +19,8 @@ int main(int argc, char **argv)
         printf("key must be positve\n");
         return 1;
     }
-    for(l = 0; l < strlen(key); l++)
-    if(argv[1]) == "20x")
+    
+    if(argv[1][2]) == 'x')
     {
         printf("Usage: ./caesar key ");
         return 1;

@@ -6,7 +6,7 @@
 //modules.
 int main(int argc, char **argv)
 {
-
+    bool isKeyValid = true;
     if (argc != 2)
     {
         printf("Usage: ./caesar key\n");
@@ -20,11 +20,14 @@ int main(int argc, char **argv)
         return 1;
     }
     
-    if(argv[1][2] == 'x')
-    {
-        printf("Usage: ./caesar key ");
-        return 1;
-    }
+     for (int i = 0; i < len; i++)
+        {
+            // If isdigit detects a non-digit it'll set our stored bool to false and end the loop
+            if (isdigit(argv[1][i]) == false)
+            {
+                isKeyValid = false;
+                i = len;
+            }
     string plaintext = get_string("plaintext: "); //plai text input
     //loop
     printf("ciphertext: ");

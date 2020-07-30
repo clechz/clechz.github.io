@@ -19,8 +19,8 @@ int main(int argc, char **argv)
         printf("key must be positve\n");
         return 1;
     }
-    for(l = 0; l < strlen(k); l++)
-    if(isalpha(k[l]))
+    for(l = 0; l < strlen(key); l++)
+    if(isalpha(key[l]))
     {
         printf("Usage: key must be number")
         return 1

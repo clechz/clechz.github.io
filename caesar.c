@@ -4,14 +4,9 @@
 #include<ctype.h>
 #include<string.h>
 //modules.
-int main(int argc, char **argv)
+int main(int argc, char string argv[])
 {
-    bool isKeyValid = true;
-    if (argc != 2)
-    {
-        printf("Usage: ./caesar key\n");
-        return 1;
-    }
+
 
     int key = atoi(argv[1]); //"13">>13
     if (key < 0)
@@ -19,19 +14,17 @@ int main(int argc, char **argv)
         printf("key must be positve\n");
         return 1;
     }
-    
-    for (int l = 0; l < len; l++)
+    for (j = 0; j < strlen(argv[1]); j++)
+    if (!isdigit(argv[1][j]))
     {
-        // If isdigit detects a non-digit it'll set our stored bool to false and end the loop
-        if (isdigit(argv[1][l]) == false)
-        {
-            isKeyValid = false;
-            l = len;
+        printf("Usage: no-numirc, key");
+        return 1;
     }
+
+
     string plaintext = get_string("plaintext: "); //plai text input
     //loop
     printf("ciphertext: ");
-    int len;
     for (int i = 0, len = strlen(plaintext); i < len; i++)
     {
 
@@ -51,7 +44,7 @@ int main(int argc, char **argv)
 
     }
     printf("\n"); //new line
-    
+
 }
 
 

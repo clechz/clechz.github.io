@@ -20,9 +20,9 @@ int main(int argc, char **argv)
         return 1;
     }
     for(l = 0; l < strlen(key); l++)
-    if(key[l] != int)
+    if(isalpha(key[l]))
     {
-        printf("Usage: key must be number");
+        printf("Usage: ./caesar key ");
         return 1;
     }
     string plaintext = get_string("plaintext: "); //plai text input

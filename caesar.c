@@ -97,7 +97,7 @@ int main(int argc, string argv[])
                         }
                         else
                         {
-                                plain[i] = 'a' + keyRemainder - 1;
+                            plain[i] = 'a' + keyRemainder - 1;
                         }
                     }
                     else if (plain[i] + KEY <= 'z')

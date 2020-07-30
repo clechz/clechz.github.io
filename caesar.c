@@ -20,7 +20,7 @@ int main(int argc, char **argv)
         return 1;
     }
     for(l = 0; l < strlen(key); l++)
-    if(isdigit(argv[1][l]) == false)
+    if(argv[1]) == "20x")
     {
         printf("Usage: ./caesar key ");
         return 1;

@@ -22,7 +22,7 @@ int main(int argc, char **argv)
     for(l = 0; l < strlen(key); l++)
     if(isalpha(key[l]))
     {
-        printf("Usage: key must be number")
+        printf("Usage: key must be number");
         return 1
     }
     string plaintext = get_string("plaintext: "); //plai text input

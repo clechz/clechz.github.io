@@ -40,25 +40,23 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
 
 void swap(RGBTRIPLE * pixel1, RGBTRIPLE * pixel2)
 {
-    RGBTRIPLE temp = *pixel;
-    *pixel1 = *pixel2
-    *pixel2 = temp
-
-
+    RGBTRIPLE temp = *pixel1;
+    *pixel1 = *pixel2;
+    *pixel2 = temp;
 }
 // Reflect image horizontally
 void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
-     for (int i = 0; i < height; i++)
+    for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width / 2; j++)
         {
-            swap(&image[i][j], &image[i][width -1 - i])
+            swap(&image[i][j], &image[i][width -1 - j]);
         }
+    }
 }
-
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
-
+    return
 }

@@ -28,9 +28,9 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
         for (int j = 0; j < width; j++)
         {
             RGBTRIPLE pixel = image[i][j];
-            int orginalRed = pixel.rgbtRed
-            int orginalGreen = pixel.rgbtGreen
-            int orginalBlue = pixel.rgbtBlue
+            int orginalRed = pixel.rgbtRed;
+            int orginalGreen = pixel.rgbtGreen;
+            int orginalBlue = pixel.rgbtBlue;
             image[i][j].rgbtRed = cap(round(0.393 * orginalRed+ 0.769 * orginalGreen + 0.189 * orginalBlue));
             image[i][j].rgbtGreen = cap(round(0.349 * orginalRed+ 0.686 * orginalGreen + 0.168 * orginalBlue));;
             image[i][j].rgbtBlue = cap(round(0.272 *orginalRed+ 0.534 * orginalGreen + 0.131 * orginalBlue));;
@@ -55,7 +55,10 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
         }
     }
 }
+
 // Blur image
+RGBTRIPLE blurred(int h, int w, RGBTRIPLE original[h][w], int k, int m, int rows, int columns);
+
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
     RGBTRIPLE new_image[height][width];

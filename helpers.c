@@ -57,86 +57,37 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 }
 
 // Blur image
-RGBTRIPLE blurred(int h, int w, RGBTRIPLE original[h][w], int k, int m, int rows, int columns);
-
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
-    RGBTRIPLE new_image[height][width];
+    int counter = 0;
+    int sumGreen = 0;
+    int sumRed = 0;
+    int sumBlue = 0;
     for (int i = 0; i < height; i++)
     {
-        //Blur Corners
         for (int j = 0; j < width; j++)
         {
-            if (i == 0 && j == 0)
+            for (int k = i - 1; k <= i + 1; k++)
             {
-                new_image[i][j] = blurred(height, width, image, 0, 0, 2, 2);
+                for (int m = j - 1; m <= j + 1; m++)
+                {
+                    if (k >= 0 && m >= 0 && k <= height && m <= width)
+                    {
+                        sumGreen += image[k][m].rgbtGreen;
+                        sumBlue += image[k][m].rgbtBlue;
+                        sumRed += image[k][m].rgbtRed;
+                        counter++;
+                    }
+                }
             }
-            else if (i == 0 && j == width - 1)
-            {
-                new_image[i][j] = blurred(height, width, image, 0, width - 2, 2, 2);
-            }
-            else if (i == height - 1 && j == 0)
-            {
-                new_image[i][j] = blurred(height, width, image, height - 2, 0, 2 , 2);
-            }
-            else if (i == height - 1 && j == width - 1)
-            {
-                new_image[i][j] = blurred(height, width, image, height - 2, width - 2, 2, 2);
-            }
-            
-            //Blur edges
-            else if (i == 0 && ((j != 0) || (j != width - 1)))
-            {
-                new_image[i][j] = blurred(height, width, image, 0, j - 1, 2, 3);
-            }
-            else if (i == height - 1 && ((j != 0) || (j != width - 1)))
-            {
-                new_image[i][j]  = blurred(height, width, image, height - 2, j - 1, 2, 3);
-            }
-            else if (j == 0 && ((i != 0) || (i != height - 1)))
-            {
-                 new_image[i][j] = blurred(height, width, image, i - 1, 0, 3, 2);
-            }
-            else if (j == width - 1 && ((i != 0) || (i != height - 1)))
-            {
-                new_image[i][j] = blurred(height, width, image, i - 1, width - 2, 3, 2);
-            }
-            
-            //Blur middle
-            else
-            {
-                new_image[i][j] = blurred(height, width, image, i - 1, j - 1, 3, 3);
-            }
+            image[i][j].rgbtGreen = sumGreen / counter;
+            image[i][j].rgbtBlue = sumBlue / counter;
+            image[i][j].rgbtRed = sumRed / counter;
+            counter = 0;
+            sumGreen = 0;
+            sumBlue = 0;
+            sumRed = 0;
         }
     }
-    image = new_image;
     return;
-}
-
-//Calculates blur values INPUT: (original image, (start index of top left pixel in box) k, m, no. rows, no. columns)
-RGBTRIPLE blurred(int h, int w, RGBTRIPLE original[h][w], int k, int m, int rows, int columns)
-{
-    long sum_red = 0;
-    long sum_green = 0;
-    long sum_blue = 0;
-    float sum_counter = 0;
-    
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < columns; j++)
-        {
-            sum_red += original[k + i][m + j].rgbtRed;
-            sum_green += original[k + i][m + j].rgbtGreen;
-            sum_blue += original[k + i][m + j].rgbtBlue;
-            sum_counter++;
-        }
-    }
-    
-    
-    RGBTRIPLE image_blurred;
-    image_blurred.rgbtRed = round(sum_red / sum_counter);
-    image_blurred.rgbtGreen = round(sum_green / sum_counter);
-    image_blurred.rgbtBlue = round(sum_blue / sum_counter);
-    
-    return image_blurred;
 }

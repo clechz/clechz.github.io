@@ -1,3 +1,4 @@
+//std libarys..
 #include "helpers.h"
 #include<math.h>
 #include<cs50.h>
@@ -5,6 +6,7 @@
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
 {
+    //evry pixel
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
@@ -24,6 +26,7 @@ int cap(int value)
 // Convert image to sepia
 void sepia(int height, int width, RGBTRIPLE image[height][width])
 {
+    //loop over every pixel
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
@@ -32,15 +35,16 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
             int orginalRed = pixel.rgbtRed;
             int orginalGreen = pixel.rgbtGreen;
             int orginalBlue = pixel.rgbtBlue;
-            image[i][j].rgbtRed = cap(round(0.393 * orginalRed+ 0.769 * orginalGreen + 0.189 * orginalBlue));
-            image[i][j].rgbtGreen = cap(round(0.349 * orginalRed+ 0.686 * orginalGreen + 0.168 * orginalBlue));;
-            image[i][j].rgbtBlue = cap(round(0.272 *orginalRed+ 0.534 * orginalGreen + 0.131 * orginalBlue));;
+            image[i][j].rgbtRed = cap(round(0.393 * orginalRed + 0.769 * orginalGreen + 0.189 * orginalBlue));
+            image[i][j].rgbtGreen = cap(round(0.349 * orginalRed + 0.686 * orginalGreen + 0.168 * orginalBlue));;
+            image[i][j].rgbtBlue = cap(round(0.272 * orginalRed + 0.534 * orginalGreen + 0.131 * orginalBlue));;
         }
     }
 }
 
-void swap(RGBTRIPLE * pixel1, RGBTRIPLE * pixel2)
+void swap(RGBTRIPLE *pixel1, RGBTRIPLE *pixel2)
 {
+    //swap func for reflect
     RGBTRIPLE temp = *pixel1;
     *pixel1 = *pixel2;
     *pixel2 = temp;
@@ -48,30 +52,32 @@ void swap(RGBTRIPLE * pixel1, RGBTRIPLE * pixel2)
 // Reflect image horizontally
 void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
+    //loop over evry pixel
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width / 2; j++)
         {
-            swap(&image[i][j], &image[i][width -1 - j]);
+            swap(&image[i][j], &image[i][width - 1 - j]);
         }
     }
 }
-
+//tow days working on this fucking -_-func
 bool isvap(int i, int j, int height, int width)
 {
     return i >= 0 && i < height && j >= 0 && j < width;
 }
 RGBTRIPLE blurpix(int i, int j, int height, int width,  RGBTRIPLE image[height][width])
 {
-    int redvalue, greenvalue, bluevalue; redvalue = greenvalue = bluevalue =0;
+    int redvalue, greenvalue, bluevalue;
+    redvalue = greenvalue = bluevalue = 0;
     int sumvapix = 0;
-     for (int di = -1; di <= 1; di++)
+    for (int di = -1; di <= 1; di++)
     {
         for (int dj = -1; dj <= 1; dj++)
         {
             int ni = i + di;
             int nj = j + dj;
-            if(isvap(ni, nj, height, width))
+            if (isvap(ni, nj, height, width))
             {
                 sumvapix++;
                 redvalue += image[ni][nj].rgbtRed;
@@ -89,6 +95,7 @@ RGBTRIPLE blurpix(int i, int j, int height, int width,  RGBTRIPLE image[height][
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
+    //they new blured image
     RGBTRIPLE neimg[height][width];
     for (int i = 0; i < height; i++)
     {
@@ -106,3 +113,4 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 
     }    
 }    
+//by(abdullah/clechz)

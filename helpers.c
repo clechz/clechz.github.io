@@ -1,5 +1,6 @@
 #include "helpers.h"
 #include<math.h>
+#include<cs50.h>
 
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
@@ -56,38 +57,52 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     }
 }
 
+bool isvap(int i, int j, int height, int width)
+{
+    return i >= 0 && i < height && j >= 0 && j < width;
+}
+RGBTRIPLE blurpix(int i, int j, int height, int width,  RGBTRIPLE image[height][width])
+{
+    int redvalue, greenvalue, bluevalue; redvalue = greenvalue = bluevalue =0;
+    int sumvapix = 0;
+     for (int di = -1; di <= 1; di++)
+    {
+        for (int dj = -1; dj <= 1; dj++)
+        {
+            int ni = i + di;
+            int nj = j + dj;
+            if(isvap(ni, nj, height, width))
+            {
+                sumvapix++;
+                redvalue += image[ni][nj].rgbtRed;
+                greenvalue += image[ni][nj].rgbtGreen;
+                bluevalue += image[ni][nj].rgbtBlue;
+            }
+        }
+    }
+    RGBTRIPLE blurpix;
+    blurpix.rgbtRed = round((float)redvalue / sumvapix);
+    blurpix.rgbtGreen = round((float)greenvalue / sumvapix);
+    blurpix.rgbtBlue = round((float)bluevalue / sumvapix);
+    return blurpix;
+}
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
-    int counter = 0;
-    int sumGreen = 0;
-    int sumRed = 0;
-    int sumBlue = 0;
+    RGBTRIPLE neimg[height][width];
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
         {
-            for (int k = i - 1; k <= i + 1; k++)
-            {
-                for (int m = j - 1; m <= j + 1; m++)
-                {
-                    if (k >= 0 && m >= 0 && k <= height && m <= width)
-                    {
-                        sumGreen += image[k][m].rgbtGreen;
-                        sumBlue += image[k][m].rgbtBlue;
-                        sumRed += image[k][m].rgbtRed;
-                        counter++;
-                    }
-                }
-            }
-            image[i][j].rgbtGreen = sumGreen / counter;
-            image[i][j].rgbtBlue = sumBlue / counter;
-            image[i][j].rgbtRed = sumRed / counter;
-            counter = 0;
-            sumGreen = 0;
-            sumBlue = 0;
-            sumRed = 0;
-        }
+            neimg[i][j] = blurpix(i, j, height, width, image);
+        }   
     }
-    return;
-}
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            image[i][j] = neimg[i][j];
+        }    
+
+    }    
+}    

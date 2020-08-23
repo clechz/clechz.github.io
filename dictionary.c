@@ -1,15 +1,16 @@
 /**
  * Implements a dictionary's functionality.
  */
-
+//data structure used:linked lists and hash tabels and quqes
+//std libarys
 #include <stdbool.h>
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
-
+//dic libary
 #include "dictionary.h"
-
+//main node
 typedef struct node
 {
     bool is_word;
@@ -19,28 +20,32 @@ node;
 
 node *root = NULL;
 
-void free_nodes(node* trav);
+void free_nodes(node *trav);
 
 /**
  * Returns true if word is in dictionary else false.
  */
-bool check(const char *word)
+bool check(const char *word) //checking 
 {
     node *trav = root;
     int i = 0;
     int length_word = strlen(word);
-    for (int j = 0; j < length_word+1; j++)
+    for (int j = 0; j < length_word + 1; j++)
     {
         if (word[j] == '\0')
         {
             if (trav->is_word == true)
+            {
                 return true;
+            }    
             else
+            {
                 return false;
+            }    
         }    
         if (isupper(word[j]))
         {
-            i = word[j]-65;
+            i = word[j] - 65;
         }
         else if (word[j] == '\'')
         {
@@ -48,7 +53,7 @@ bool check(const char *word)
         }
         else if (islower(word[j]))
         {
-            i = word[j]-97;
+            i = word[j] - 97;
         }
         
         if (trav->children[i] == NULL)
@@ -57,7 +62,7 @@ bool check(const char *word)
         }
         else
         {
-           trav = trav->children[i];
+            trav = trav->children[i];
         }
     }    
     
@@ -71,7 +76,7 @@ bool check(const char *word)
 
 unsigned int n = 0;
 
-bool load(const char *dictionary)
+bool load(const char *dictionary) //loading dic given
 {
     // Creates root node
     root = calloc(1, sizeof(node));
@@ -79,47 +84,47 @@ bool load(const char *dictionary)
     int i = 0;
     char dictionary_word[46];
     
-    FILE* fp = fopen(dictionary, "r");
+    FILE *fp = fopen(dictionary, "r");
     if (fp == NULL)
     {
         return false;
     }
 
-        while (fscanf(fp, "%s", dictionary_word) != EOF)
-        {     
-            node *trav = root;
+    while (fscanf(fp, "%s", dictionary_word) != EOF)
+    {     
+        node *trav = root;
             
-            for (int j = 0; j < strlen(dictionary_word)+1; j++)
-            { 
-                if (dictionary_word[j] == '\0')
-                {
-                    trav->is_word = true;
-                    n++;
-                    break;
-                }    
-                else if (islower(dictionary_word[j]))
-                {
-                    i = dictionary_word[j]-97;
-                }
-                else if (dictionary_word[j] == '\'')
-                {
-                    i = 26;
-                }
+        for (int j = 0; j < strlen(dictionary_word) + 1; j++)
+        { 
+            if (dictionary_word[j] == '\0')
+            {
+                trav->is_word = true;
+                n++;
+                break;
+            }    
+            else if (islower(dictionary_word[j]))
+            {
+                i = dictionary_word[j] - 97;
+            }
+            else if (dictionary_word[j] == '\'')
+            {
+                i = 26;
+            }
                 
-                if (trav->children[i] == NULL)
-                {
-                    node *new_node = calloc(1, sizeof(node));
-                    new_node->is_word = false;
-                    
-                    trav->children[i] = new_node;
-                    trav = new_node;
-                }
-                else
-                {
-                    trav = trav->children[i];
-                }
+            if (trav->children[i] == NULL)
+            {
+                node *new_node = calloc(1, sizeof(node));
+                new_node->is_word = false;
+                
+                trav->children[i] = new_node;
+                trav = new_node;
+            }
+            else
+            {
+                trav = trav->children[i];
             }
         }
+    }
     
     fclose(fp);
     return true;
@@ -128,9 +133,9 @@ bool load(const char *dictionary)
 /**
  * Returns number of words in dictionary if loaded else 0 if not yet loaded.
  */
-unsigned int size(void)
+unsigned int size(void) //sizing dic
 {
-    if(n != 0)
+    if (n != 0)
     {    
         return n;
     }
@@ -144,14 +149,14 @@ unsigned int size(void)
 /**
  * Unloads dictionary from memory. Returns true if successful else false.
  */
-bool unload(void)
+bool unload(void) //freing memort and closing files.
 {
-    node* trav = root;
+    node *trav = root;
     if (trav)
     {
         if (root != NULL)
         {
-           free_nodes(root);
+            free_nodes(root);
         }
         return true;
     }
@@ -160,7 +165,7 @@ bool unload(void)
     
 }
 
-void free_nodes(node* trav)
+void free_nodes(node *trav)
 {
     for (int i = 0; i < 27; i++)
     {
@@ -173,3 +178,7 @@ void free_nodes(node* trav)
     free(trav);
     return;
 }
+//by(Abdullah/clechz)
+//not commpleted...
+//acsepts more than 200k words and almost 10k lines of libarys
+//2 di 5 main files

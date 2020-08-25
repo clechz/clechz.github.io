@@ -11,7 +11,7 @@ for i in range(len(s)):
     if s[i].isalpha():
         nol += 1
         
-    if s[i] == '!' or '.' or'?':
+    if s[i] == '!' or s[i] '.' or s[i]'?':
         nos += 1
         
 L = nol / now * 100
@@ -20,7 +20,7 @@ index = round(0.0588 * L - 0.296 * S - 15.8)
 
 if index < 1:
     print("before grade 1")
-elif index >= 16:
+if index >= 16:
     print("grade 16+")
 else:
     print(f"grade {index}")

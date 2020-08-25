@@ -1,6 +1,7 @@
+from cs50 import get_int
 # user`s input
 while True:
-    n = int(input("Height: "))
+    n = get_int("Height: ")
     if n >= 1 and n <= 8:
         break
 k = 1  # icrement of hashes

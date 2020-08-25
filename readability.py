@@ -11,7 +11,7 @@ for i in range(len(s)):
     if s[i].isalpha():
         nol += 1
         
-    if s[i] == '!' or s[i] '.' or s[i]'?':
+    if s[i] == '!' or s[i] == '.' or s[i] == '?':
         nos += 1
         
 L = nol / now * 100

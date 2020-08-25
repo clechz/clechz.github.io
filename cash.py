@@ -1,7 +1,7 @@
 from cs50 import get_float 
 while(True):
     dn = get_float('change owed: ')
-    if dn > 0:
+    if dn > 0.0:
         break
 cen = round(dn * 100)
 coins = 0

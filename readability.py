@@ -19,8 +19,8 @@ S = nos / now * 100
 index = round(0.0588 * L - 0.296 * S - 15.8)
 
 if index < 1:
-    print("before grade 1")
+    print("Before grade 1")
 if index >= 16:
-    print("grade 16+")
+    print("Grade 16+")
 else:
     print(f"Grade {index}")

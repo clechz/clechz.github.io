@@ -1,58 +1,39 @@
+# short tandem repeat/ str
 from sys import argv, exit
-import sys
 import csv
-
-# checks for 2 command lines exactly
-if len(argv) != 3:
-    print("Usage: python dna.py data.csv sequence.txt")
+# get max func :
+def GetMax(s, sub):
+    ans = [0] * len(s)
+    ENOL = len(s) - len(sub)
+    for i in range(ENOL, -1, -1):
+        if s[i : i + len(sub)] == sub:
+            if i + len(sub) > len(s) - 1:
+                ans[i] = 1
+            else:
+                ans[i] = 1 + ans[i + len(sub)]
+    return max(ans)        
+def print_match(reader, actual):
+    for line in reader:
+        person = line[0]
+        values = [ int(val) for val in line [1:] ] 
+        if values == actual:
+            print(person)
+            return
+    print("no match")    
+# MAIN
+argc =  len(argv)
+if argc != 3:
+    print("Usage:python dna.py csv(path)  STR.txt (file))")
     exit(1)
 
-else:
-    # open csv file, storing it as a list
-    with open(sys.argv[1], newline='') as csv_file:
-        datareader = csv.reader(csv_file)
-        # Row1 contains the sequences of DNA to be read
-        row1 = next(datareader)
+csv_path = argv[1]
+txt_path = argv[2]
+strc = 0
+with open(csv_path,"r") as csvf:
+    reader = csv.reader(csvf)
+    allseq = next(reader)[1:]
+    with open(txt_path,"r") as txtf:
+        s = txtf.read()
+        actual = [GetMax(s, seq) for seq in allseq]
+    print_match(reader, actual)    
 
-        # open text file
-        with open(sys.argv[2], 'r') as file:
-            sreader = file.read()
-
-            # an empty list, for storing the highest counts of each sequence
-            counter = []
-
-            # iterate through every DNA sequence to be counted
-            for i in range(1, len(row1)):
-                occurance = 0
-                for c in sreader:
-                    n = 1
-
-                    # if find a sequence in text file, keep finding until it ends
-                    while row1[i]*n in sreader:
-                        n += 1
-
-                    # update occurance only if 2nd seq longer than 1st seq
-                    if (n - 1) > occurance:
-                        occurance = n - 1
-
-                # add the highest number of occurance into list counter
-                counter.append(occurance)
-
-            # condition to check if go through all text file and have not found object
-            found = False
-            for row in datareader:
-                for c in range(len(counter)):
-
-                    # if any element or csv row does not match the list counter, skip to next row
-                    if int(row[c+1]) != int(counter[c]):
-                        break
-
-                    # if we reach the last element and loop is still not broken, this means this is the row required
-                    elif c == (len(counter)-1):
-                        print(row[0])
-                        found = True
-                        break
-
-            # if go through and have not found anything
-            if found == False:
-                print("No match")

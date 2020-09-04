@@ -3,9 +3,12 @@ import cs50
 from sys import argv, exit
 
 # parse the fullname
+
+
 def parse(fullname):
     names_list = fullname.split()
     return names_list 
+    
 
 argc = len(argv)
 if argc != 2:
@@ -33,4 +36,4 @@ with open(argv[1]) as inf:
         
         # ecuting the sql query: add .stname, midname, lasname, house, birth. to students table
         db.execute("INSERT INTO students (first, middle, last, house, birth) VALUES (?, ?, ?, ?, ?)", 
-            stname, midname, lasname, house, birth)
+                   stname, midname, lasname, house, birth)

@@ -1,3 +1,6 @@
-SELECT people.name
-FROM people JOIN stars, movies ON stars.person_id = people.id AND stars.movie_id = movies.id
-WHERE movies.title LIKE "Toy Story"
+-- write a SQL query to list the names of all people who starred in Toy Story.
+SELECT name
+FROM people
+JOIN stars ON stars.person_id = people.id
+JOIN movies ON movies.id = stars.movie_id
+WHERE title = "Toy Story"

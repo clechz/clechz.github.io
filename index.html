@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>clechz.com/home</title>
+        <meta name="viewport" content="width=device-width, inital-scale=1.0">
+    </head>
+    <body>
+        <div id="div" class="countainer">
+
+        <nav class="navbar  navbar-expand-md navbar-dark bg-dark">
+            <a style="color: gold;" class="navbar-brand" href="index.html">CLECHZ</a>
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html"> Home|</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index2.html"> Crown Prince|</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html"> Contact|</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html"> login|</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.vision2030.gov.sa/en"> Official|</a>
+                </li>
+
+                <li class="nav-item active">
+                    <form>
+                        <input id="searchbar" type="text" placeholder="              search? ">
+                    </form>
+                </li>
+
+            </ul>
+        </nav>
+
+        <ul class="t">
+
+            <li>IT IS MY PLEASURE TO PRESENT SAUDI ARABIA’S VISION FOR THE FUTURE IT IS AN AMBITIOUS YET </li>
+
+            <li>ACHIEVABLE BLUEPRINT WHICH EXPRESSES OUR LONG-TERM  GOALS AND EXPECTATIONS</li>
+
+            <li> AND REFLECTS OUR COUNTRY'S STRENGTHS AND  CAPABILITIES FOREWORD...</li>
+
+
+        </ul>
+
+
+        <center>
+            <h1 class="t">________________________________________________</h1>
+
+            <iframe class="center" width="905" height="515" src="https://www.youtube.com/embed/JCDkxWpDobE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            <h1 class="t">________________________________________________</h1>
+        </center>
+
+        <center>
+            <h2>Breif about The Vision</h2>
+
+            <p><a href="https://www.vision2030.gov.sa/en">Saudi Vision 2030</a> </p>
+
+            <p>is the Saudi Arabia’s vision for future.</p>
+
+            <p>It is a package of social and economic policies that are</p>
+
+            <p> designed to free the kingdom from dependence on oil exports</p>
+
+            <p>and to build a prosperous and sustainable economic future</p>
+
+            <p> by focusing on country’s strength and policies.</p>
+
+            <center>
+                <img class="center" width="1200" src="saudi-arabia-banner.jpg" alt="2030 banner" >
+            </center>
+
+            <h2>2030 Vision Goals</h2>
+            <a href="https://www.vision2030.gov.sa/en">Saudi Vision 2030</a>
+
+            <p> is a strategic framework to reduce Saudi Arabia's dependence on oil, </p>
+
+            <p>diversify its economy and develop public service sectors such as </p>
+
+            <p>health, education, infrastructure, recreationand tourism.</p>
+
+            <p>Key goals include reinforcing economic and investment activities</p>
+
+            <p>increasing non-oil international trade</p>
+
+        </center>
+
+        <h5 class="right"><a href="index2.html">Next page--</a></h5>
+        <form action="index2.html" method="get">
+            <input class="r" type="submit" value="Click Here">
+        </form>
+
+            <p class="p">. <a class="h" href="https://www.youtube.com/channel/UC-g2XezHaLeR6QG2qxSBHjw/featured">yoytube</a></p>
+
+            <p class="p">. <a class="h" href="https//www.instagram.com/i.az.h">instagram</a></p>
+
+            <nav class="navbar  navbar-expand-md navbar-dark bg-dark">
+                    <a class="navbar-brand" href="#">2030</a>
+                    <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item active">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.youtube.com/channel/UC-g2XezHaLeR6QG2qxSBHjw/featured"> YouTube </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.instagram.com/i.az.h"> Instagram</a>
+                    </ul>
+            </nav>
+
+              <script>
+                let body = document.querySelector('body');
+                let div = document.querySelector('#div');
+                let r = document.querySelector('.r');
+
+                document.querySelector('#darkmode').onclick = function() {
+                    body.style.backgroundColor = '#555';
+                    body.style.color = 'white';
+                    div.style.backgroundColor = '#555';
+                }
+
+                document.querySelector('#lightmode').onclick = function() {
+                    body.style.backgroundColor = 'white';
+                    body.style.color = 'black';
+                    div.style.backgroundColor = 'white';
+                    r.style.backgroundColor = '#555';
+
+                }
+                function party()
+                {
+
+                    while(true)
+                    {
+                        body.style.backgroundColor = "blue"
+
+                        if(body.style.backgroundColor === "blue")
+                        {
+                            body.style.backgroundColor = 'red';
+                        }
+                    }
+                }
+
+
+                document.querySelector('#partymode').onclick = party()
+</script>
+    </div></body>
+</html>

@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="/settings/change_username" method="post">
+        <div class="form-group">
+            <input name="username" class="form-control" autofocus type="text" placeholder="Old (Username)">
+        </div>
+
+        <div class="form-group">
+        <input name="password" id="password" class="form-control" autofocus type="password" placeholder="Password">
+        </div>
+
+        <div class="form-group">
+        <input name="reusername" class="form-control" autofocus type="text" placeholder="New (Username)">
+        </div>
+
+        <button id="submit" class="btn btn-primary" type="submit">submit</button>
+    </form>
+{% endblock %}

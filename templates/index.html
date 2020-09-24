@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <span style="padding-right:10px;">
+      <h4 class="shares">{{username}}</h4>
+      <h4 class="money">{{cash}}</h4>
+    </span>
+    <table style="width:90%;"  class="table table-striped ml-auto mt-2 width-device t">
+      <thead class="pad">
+
+        <th class="symbol">Symbol</th>
+        <th class="name">Name</th>
+        <th class="shares">Shares</th>
+        <th class="money">Price</th>
+        <th class="name">TOTAL</th>
+
+      </thead>
+
+      {% if grand == "$0.00" %}
+         <tbody style="font-size:x-large" class="name">
+           <tr>
+              <td colspan="1"></td>
+              <td>EMPTY!</td>
+              <td>TABLE</td>
+
+              <td colspan="2"></td>
+
+           </tr>
+         </tbody>
+      {% endif %}
+
+      <tbody>
+          {% for p in portfolio %}
+            <tr>
+
+              <td class="symbol">{{p["symbol"]}}</td>
+              <td class="name">{{p["name"]}}</td>
+              <td class="shares">{{p["shares"]}}</td>
+              <td class="money">{{p["price"]}}</td>
+              <td class="name">{{p["total"]}}</td>
+
+            </tr>
+          {% endfor %}
+
+
+      </tbody>
+      <tfoot class="pad">
+
+        <tr>
+          <td><p class="grand">GRAND TOTAL</p></td>
+          <td colspan="3"></td>
+          <td><p class="grand">{{grand}}</p></td>
+        </tr>
+
+      </tfoot>
+
+    </table>
+
+{% endblock %}

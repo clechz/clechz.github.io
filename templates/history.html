@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+    <table class="table table-striped ml-auto mt-2 width-device">
+      <thead>
+
+        <th class="symbol">Symbol</th>
+        <th class="shares">Shares</th>
+        <th class="money">Price</th>
+        <th class="symbol">transacted</th>
+
+      </thead>
+
+      <tbody>
+          {% for row in rows  %}
+            {% if row["shares"][0] == '-' %}
+              <tr>
+
+                <td class="symbol">{{row["symbol"]}}</td>
+                <td class ="name">{{row["shares"]}}</td>
+                <td class="name">{{row["price"]}}</td>
+                <td class="symbol">{{row["transacted"]}}</td>
+
+              </tr>
+            {% else  %}
+              <tr>
+
+                <td class="symbol">{{row["symbol"]}}</td>
+                <td class ="money">{{row["shares"]}}</td>
+                <td class="money">{{row["price"]}}</td>
+                <td class="symbol">{{row["transacted"]}}</td>
+
+              </tr>
+
+            {% endif %}
+          {% endfor %}
+
+      </tbody>
+
+
+    </table>
+
+{% endblock %}

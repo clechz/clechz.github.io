@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Search</title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            p{
+                margin-left: 30px;
+                text-align: left;
+            }
+             .advanced-filed{
+                position: absolute;
+                margin-top: -38px;
+                margin-left: -400px;
+                width: 450px;
+                height: 25px;
+                border: 1px solid #cccccc;
+                border-radius: 3px;
+
+            }
+            .btn{
+                padding: 10px;
+
+            }
+
+        </style>
+    </head>
+    <body>
+        <img style="margin:10px;" width="90px" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google logo" />
+        <a href="index.html">Google Search </a>
+        <h3 style="color: #d93025; font-family:arial,sans-serif; margin-left: 40px; border-bottom: 1px solid #dddddd;">Advanced Search</h3>
+        <br>
+        <center>
+            <form action="https://google.com/search">
+                <p>all these words:</p>
+                <input class="advanced-filed" type="text" name="as_q">
+                <br>
+                <br>
+                <p>this exact word or phrase:</p>
+                <input class="advanced-filed" type="text" name="as_epq">
+                <br>
+                <br>
+                <p>any of these words:</p>
+                <input class="advanced-filed" type="text" name="as_oq">
+                <br>
+                <br>
+                <p>none of these words:</p>
+                <input class="advanced-filed" type="text" name="as_eq">
+                <br>
+                <input class="btn" style="background-color:#4d90fe; color: white;" class="search-btn" type="submit" value="Advance Search">
+            </form>
+        </center>
+    </body>
+</html>

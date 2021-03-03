@@ -1,0 +1,22 @@
+a{
+    position: absolute;
+    right: 0;
+}
+
+.search-filed{
+    border-radius: 40px 40px 40px 40px;
+    width: 500px;
+    height: 35px;
+    border: 1px solid #dddddd;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.search-btn{
+    margin-top: 10px;
+}
+.btn{
+    padding: 20px;
+    border: none;
+    background-color: white;
+    border-radius: 3px;
+}
